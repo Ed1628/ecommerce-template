@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <link rel="stylesheet" href="../assets/store.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="../assets/images/7835563.png" alt="" width="45px">
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./store.html">Shop</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Welcome to Our Store</h1>
+    </header>
+    <main class="main-store">
+        
+        <section class="product-list">
+            <article class="product-item">
+                <h2 id="product">Borsa in pelle 100%</h2>
+                <img style="margin:10%;" src="../assets/images/borsa.webp" alt="Product 1" width="80%">
+                <p>Price: $500.00</p>
+                <p>Sale: 40%</p>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product-item">
+                <h2 id="product">Gonna con motivi orientali</h2>
+                <img style="margin:10%;" src="../assets/images/gonna.webp" alt="Product 1" width="80%">
+                <p>Price: $38.00</p>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product-item">
+                <h2 id="product">Scarpe di moda uomo</h2>
+                <img style="margin:10%;" src="../assets/images/scarpe.jpg" alt="Product 1" width="80%">
+                <p>Price: $50.00</p>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product-item">
+                <h2 id="product">Giacca aviatore imbottita</h2>
+                <img style="margin:10%;" src="../assets/images/giacca.jpg" alt="Product 1" width="80%">
+                <p>Price: $150.00</p>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product-item">
+                <h2 id="product">Play station 5</h2>
+                <img style="margin:10%;" src="../assets/images/PlayStation.jpg" alt="Product 1" width="80%">
+                <p>Price: $1000.00</p>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product-item">
+                <h2 id="product">Nintendo</h2>
+                <img style="margin:10%;" src="../assets/images/nintendo.jpg" alt="Product 1" width="80%">
+                <p>Price: $200.00</p>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product-item">
+                <h2 id="product">Google console</h2>
+                <img style="margin:10%;" src="../assets/images/console1.webp" alt="Product 1" width="80%">
+                <p>Price: $380.00</p>
+                <button>Add to Cart</button>
+            </article>
+
+        </section>
+        <section class="cart">
+            <div class="header-cart">
+                <img class="icon-cart" src="../assets/images/cart.png" alt="" width="70px">
+                <h4>carrelllo</h4>
+            </div>
+          
+            <h2>Cart</h2>
+            <ul>
+                
+            </ul>
+            <p>Total: $ </p>
+            <button id="chekout">Checkout</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Our Store. All rights reserved.</p>
+    </footer>
+    <script>
+    const cart = [];
+
+    function addToCart(productName, productPrice) {
+        const product = { name: productName, price: productPrice };
+        cart.push(product);
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartList = document.querySelector('.cart ul');
+        cartList.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(product => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${product.name} - $${product.price.toFixed(2)}`;
+            cartList.appendChild(listItem);
+            total += product.price;
+        });
+
+        document.querySelector('.cart p').textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    document.querySelectorAll('.product-item button').forEach((button, index) => {
+        button.addEventListener('click', () => {
+            const productItem = button.parentElement;
+            const productName = productItem.querySelector('h2').textContent;
+            const productPrice = parseFloat(productItem.querySelector('p').textContent.replace('Price: $', ''));
+            addToCart(productName, productPrice);
+        });
+    });
+
+    document.querySelector('#chekout').addEventListener('click', () => {
+        alert('Checkout successful!');
+        cart.length = 0;
+        updateCart();
+    });
+
+    document.querySelectorAll('.product-item img').forEach((img) => {
+        img.addEventListener('click', () => {
+            const zoomedImg = document.createElement('img');
+            zoomedImg.src = img.src;
+            zoomedImg.style.position = 'fixed';
+            zoomedImg.style.top = '50%';
+            zoomedImg.style.left = '50%';
+            zoomedImg.style.transform = 'translate(-50%, -50%)';
+            zoomedImg.style.maxWidth = '90%';
+            zoomedImg.style.maxHeight = '90%';
+            zoomedImg.style.zIndex = '1000';
+            zoomedImg.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            zoomedImg.style.padding = '10px';
+            zoomedImg.style.borderRadius = '10px';
+            zoomedImg.style.cursor = 'zoom-out';
+
+            document.body.appendChild(zoomedImg);
+
+            zoomedImg.addEventListener('click', () => {
+                document.body.removeChild(zoomedImg);
+            });
+        });
+    });
+    </script>
+</body>
+</html>

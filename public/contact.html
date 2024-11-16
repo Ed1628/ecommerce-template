@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../assets/contact.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="../assets/images/7835563.png" alt="" width="45px">
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./store.html">Shop</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Contact Us</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Get in Touch</h2>
+            <p>If you have any questions, feel free to reach out to us using the form below.</p>
+            <form action="/submit-contact-form" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section>
+            <h2>Our Contact Information</h2>
+            <p>Email: support@ecommerce.com</p>
+            <p>Phone: +1 234 567 890</p>
+            <p>Address: 123 E-commerce St, Online City, Web</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 E-commerce. All rights reserved.</p>
+    </footer>
+</body>
+</html>
